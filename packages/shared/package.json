@@ -1,0 +1,26 @@
+{
+  "name": "@repo/shared",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit ",
+    "clean": "rm -rf dist",
+    "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/backend": "workspace:*",
+    "@repo/db": "workspace:*",
+    "@trpc/server": "catalog:",
+    "typescript": "catalog:"
+  }
+}

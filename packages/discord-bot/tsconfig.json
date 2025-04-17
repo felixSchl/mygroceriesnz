@@ -1,0 +1,11 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "./",
+    "types": ["node", "discord.js"]
+  },
+  "include": ["./"],
+  "files": ["./index.ts"],
+  "exclude": ["node_modules", "dist"]
+}

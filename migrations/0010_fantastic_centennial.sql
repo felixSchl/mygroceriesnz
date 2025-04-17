@@ -1,0 +1,1 @@
+ALTER TABLE "job_state" ADD COLUMN "discord_message_id" text;

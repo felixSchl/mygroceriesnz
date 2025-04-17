@@ -1,0 +1,1 @@
+ALTER TABLE `app_state` ADD `use_location_in_search` integer DEFAULT true;

@@ -1,0 +1,49 @@
+diff --git a/helpers/consts.js b/helpers/consts.js
+index 5d90bb98514c8364944d3cdf55109bfec216fe0a..2690cc3033c90c27c172e8b704b0f25c7e97ddd9 100644
+--- a/helpers/consts.js
++++ b/helpers/consts.js
+@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.syncKind = exports.serverKind = exports.dummyEventKey = exports.debugPrefix = exports.logPrefix = exports.internalEvents = exports.defaultDevServerHost = exports.defaultInngestEventBaseUrl = exports.defaultInngestApiBaseUrl = exports.headerKeys = exports.envKeys = exports.probe = exports.queryKeys = void 0;
+-const chalk_1 = __importDefault(require("chalk"));
++
+ /**
+  * Keys for accessing query parameters included in requests from Inngest to run
+  * functions.
+@@ -154,7 +154,7 @@ var internalEvents;
+     internalEvents["FunctionFinished"] = "inngest/function.finished";
+     internalEvents["ScheduledTimer"] = "inngest/scheduled.timer";
+ })(internalEvents || (exports.internalEvents = internalEvents = {}));
+-exports.logPrefix = chalk_1.default.magenta.bold("[Inngest]");
++exports.logPrefix = "[Inngest]";
+ exports.debugPrefix = "inngest";
+ exports.dummyEventKey = "NO_EVENT_KEY_SET";
+ var serverKind;
+diff --git a/helpers/errors.js b/helpers/errors.js
+index 04702439a6997d3d2e4acbb499c6e7e875b77eeb..eb09ea2f7a6bbd7ede41c0d5d3e57f8c5d9514b7 100644
+--- a/helpers/errors.js
++++ b/helpers/errors.js
+@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.functionStoppedRunningErr = exports.rethrowError = exports.OutgoingResultError = exports.fixEventKeyMissingSteps = exports.prettyError = exports.getErrorMessage = exports.minifyPrettyError = exports.prettyErrorSplitter = exports.ErrCode = exports.deserializeError = exports.isSerializedError = exports.serializeError = void 0;
+-const chalk_1 = __importDefault(require("chalk"));
++
+ const json_stringify_safe_1 = __importDefault(require("json-stringify-safe"));
+ const serialize_error_cjs_1 = require("serialize-error-cjs");
+ const strip_ansi_1 = __importDefault(require("strip-ansi"));
+@@ -268,10 +268,10 @@ exports.getErrorMessage = getErrorMessage;
+ const prettyError = ({ type = "error", whatHappened, otherwise, reassurance, toFixNow, why, consequences, stack, code, }) => {
+     var _a, _b;
+     const { icon, colorFn } = {
+-        error: { icon: "❌", colorFn: chalk_1.default.red },
+-        warn: { icon: "⚠️", colorFn: chalk_1.default.yellow },
++        error: { icon: "❌", colorFn: x=>x},
++        warn: { icon: "⚠️", colorFn: x=>x},
+     }[type];
+-    let header = `${icon}  ${chalk_1.default.bold.underline(whatHappened.trim())}`;
++    let header = `${icon}  ${whatHappened.trim()}`;
+     if (stack) {
+         header +=
+             "\n" +

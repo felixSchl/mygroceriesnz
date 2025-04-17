@@ -1,0 +1,45 @@
+#
+# Production configuration for support services.
+# Intended to be deployed as a Digital Ocean Droplet.
+#
+
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.11.3
+    environment:
+      - http_proxy
+      - https_proxy
+      - MEILI_MASTER_KEY
+      - MEILI_NO_ANALYTICS=true
+      - MEILI_ENV=production
+      - MEILI_LOG_LEVEL
+      - MEILI_DB_PATH=/data.ms
+    ports:
+      - 7700:7700
+    expose:
+      - "7700"
+    volumes:
+      - ./meilisearch/data.ms:/data.ms
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  inngest:
+    image: inngest/inngest:v1.3.3
+    environment:
+      - INNGEST_EVENT_KEY
+      - INNGEST_SIGNING_KEY
+      - INNGEST_SQLITE_DIR=/data
+      - INNGEST_SDK_URL=https://www.mygroceries.nz/api/inngest
+    ports:
+      - 8288:8288
+    volumes:
+      - ./inngest/data:/data
+    command: inngest start
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"

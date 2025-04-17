@@ -1,0 +1,42 @@
+{
+  "name": "@repo/db",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit "
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./categories": {
+      "types": "./dist/categories.d.ts",
+      "default": "./dist/categories.js"
+    },
+    "./codecs": {
+      "types": "./dist/codecs.d.ts",
+      "default": "./dist/codecs.js"
+    }
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@repo/io-ts": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "better-sqlite3": "^11.3.0",
+    "drizzle-orm": "^0.36.3",
+    "postgres": "^3.4.5",
+    "slugify-ts": "1.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/better-sqlite3": "^7.6.11",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@repo/backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit ",
+    "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./trpc": {
+      "types": "./dist/trpc/index.d.ts",
+      "default": "./dist/trpc/index.js"
+    },
+    "./inngest": {
+      "types": "./dist/inngest/index.d.ts",
+      "default": "./dist/inngest/index.js"
+    },
+    "./search": {
+      "types": "./dist/search/index.d.ts",
+      "default": "./dist/search/index.js"
+    }
+  },
+  "dependencies": {
+    "@repo/adapter-pns": "workspace:*",
+    "@repo/adapter-ww": "workspace:*",
+    "@repo/db": "workspace:*",
+    "@repo/io-ts": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "@trpc/server": "catalog:",
+    "@repo/discord-bot": "workspace:*",
+    "fp-ts": "catalog:",
+    "meilisearch": "^0.45.0",
+    "openai": "^4.76.3",
+    "sharp": "^0.33.5",
+    "superjson": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

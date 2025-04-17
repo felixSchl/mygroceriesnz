@@ -1,0 +1,48 @@
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.11
+    environment:
+      - http_proxy
+      - https_proxy
+      - MEILI_MASTER_KEY=123
+      - MEILI_NO_ANALYTICS=true
+      - MEILI_ENV=development
+      - MEILI_LOG_LEVEL
+      - MEILI_DB_PATH=/data.ms
+    ports:
+      - 7700:7700
+    expose:
+      - "7700"
+    volumes:
+      - ./meilisearch/data.ms:/data.ms
+    restart: unless-stopped
+
+  postgresql:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data_v1:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  supertokens:
+    image: registry.supertokens.io/supertokens/supertokens-postgresql
+    depends_on:
+      - postgresql
+    environment:
+      - POSTGRESQL_USER=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_HOST=postgresql
+      - POSTGRESQL_PORT=5432
+      - POSTGRESQL_DATABASE_NAME=postgres
+      - POSTGRESQL_TABLE_SCHEMA=auth
+    ports:
+      - 3567:3567
+    restart: unless-stopped
+
+volumes:
+  postgres_data_v1:

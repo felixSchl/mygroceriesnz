@@ -1,0 +1,1 @@
+ALTER TABLE "meta_product" ADD COLUMN "images" jsonb[] DEFAULT '{}';

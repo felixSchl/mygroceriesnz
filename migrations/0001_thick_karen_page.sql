@@ -1,0 +1,1 @@
+ALTER TABLE "store" ADD COLUMN "fallback_store_id" text;

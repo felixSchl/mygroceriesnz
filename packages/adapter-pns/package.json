@@ -1,0 +1,35 @@
+{
+  "name": "@repo/adapter-pns",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit ",
+    "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@repo/db": "workspace:*",
+    "@repo/io-ts": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "@sylo/logger": "^0.2.0",
+    "fp-ts": "catalog:",
+    "io-ts": "catalog:",
+    "io-ts-reporters": "catalog:",
+    "io-ts-types": "catalog:",
+    "jwt-decode": "^4.0.0",
+    "undici": "^7.2.0",
+    "vitest": "^1.6.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:",
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

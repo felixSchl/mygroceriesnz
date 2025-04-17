@@ -1,0 +1,68 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "globalEnv": [
+    "DO_NOT_TRACK",
+    "SHOPSTER_ADMIN_KEY",
+    "TURBO_TELEMETRY_DISABLED",
+    "MEILISEARCH_HOST",
+    "MEILISEARCH_API_KEY",
+    "INNGEST_BASE_URL",
+    "NUXT_PUBLIC_INNGEST_BASE_URL",
+    "INNGEST_EVENT_KEY",
+    "INNGEST_SIGNING_KEY",
+    "NUXT_PUBLIC_MAPS_API_KEY",
+    "DATABASE_URL",
+    "SHOPSTER_PROXY_URL",
+    "SHOPSTER_PROXY_URLS",
+    "DISCORD_PUBLIC_KEY",
+    "DISCORD_APPLICATION_ID",
+    "DISCORD_BOT_TOKEN",
+    "DISCORD_WEBHOOK_URL",
+    "NUXT_PUBLIC_HOST"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ],
+      "outputs": [
+        "dist/**",
+        ".output/**"
+      ]
+    },
+    "clean": {
+      "dependsOn": [
+        "^clean"
+      ],
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$"
+      ]
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^typecheck"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^lint"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

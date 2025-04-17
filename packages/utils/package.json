@@ -1,0 +1,31 @@
+{
+  "name": "@repo/utils",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit ",
+    "clean": "rm -rf dist",
+    "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@sylo/logger": "^0.2.0",
+    "gtin": "^1.0.2",
+    "fp-ts": "catalog:",
+    "io-ts": "catalog:",
+    "io-ts-reporters": "catalog:",
+    "io-ts-types": "catalog:",
+    "vitest": "^1.6.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

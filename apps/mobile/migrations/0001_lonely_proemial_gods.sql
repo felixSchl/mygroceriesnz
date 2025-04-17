@@ -1,0 +1,1 @@
+ALTER TABLE `app_state` ADD `active_list` text DEFAULT 'default';

@@ -1,0 +1,1 @@
+ALTER TABLE "store" ADD COLUMN "sync_schedule" text DEFAULT 'never';

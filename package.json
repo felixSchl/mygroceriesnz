@@ -1,0 +1,44 @@
+{
+  "name": "shopster-v3",
+  "private": true,
+  "scripts": {
+    "cli": "bun --tsconfig-override ./apps/cli/tsconfig.json ./apps/cli/main.ts",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "db:generate": "bunx drizzle-kit generate",
+    "db:migrate": "bunx drizzle-kit migrate",
+    "db:studio": "bunx drizzle-kit studio",
+    "in:dev": "dotenv -e .env.local -- pnpm",
+    "in:prod": "dotenv -e .env.prod -- pnpm"
+  },
+  "devDependencies": {
+    "@ionic/cli": "^7.2.0",
+    "@types/node": "^22.7.5",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "catalog:",
+    "inngest": "^3.27.5",
+    "prettier": "^3.2.5",
+    "turbo": "^2.3.3",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=18"
+  },
+  "resolutions": {
+    "nitropack": "2.9.7",
+    "metro": "0.81.0",
+    "metro-resolver": "0.81.0",
+    "metro-config": "0.81.0"
+  },
+  "dependencies": {
+    "inngest-cli": "^1.2.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "inngest": "patches/inngest.patch"
+    }
+  }
+}
